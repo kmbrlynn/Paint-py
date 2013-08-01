@@ -10,7 +10,7 @@
 
 from Tkinter import *
 
-# this holds the color that is clicked
+# this holds the color that is clicked.
 color = "black"
 
 # this will hold a pressed or released value
@@ -35,17 +35,23 @@ def main():
     # fit the canvas to the window. width and height are built into Tkinter
     myCanvas.config(width = screen_width/2, height = screen_height/2)
     
-    # create a button for blue
+    # GREEN button - create
+    greenButton = Button(root, text ="Green", command = greenPressed)
+    # BLUE button - create
     blueButton = Button(root, text ="Blue", command = bluePressed)
     
-    # this packs widgets into rows and columns
+    # this places the widgets. canvas is on top because of code order
     myCanvas.pack()
-    blueButton.pack()
+    greenButton.pack(side = "left")
+    blueButton.pack(side = "left")
+
+
     
     # bind my functions to built-in Tkinter mouse events
     myCanvas.bind("<Motion>", moveMouse)
     myCanvas.bind("<ButtonPress-1>", press)
     myCanvas.bind("<ButtonRelease-1>", release)
+    
     root.mainloop()
 
 # function for when mouse is in pressed position
@@ -77,7 +83,13 @@ def release(event):
     xState = None           
     yState = None
 
-# function for when you press the blue button
+# GREEN function
+def greenPressed():
+    global color
+    print("green clicked")
+    color = "green"
+
+# BLUE function
 def bluePressed():
     global color
     print("blue clicked")
