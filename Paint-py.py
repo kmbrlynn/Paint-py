@@ -1,3 +1,6 @@
+
+# =========================================================
+
 # Kmbrlynn
 # July 2013
 # Simple GUI paint app built with Python
@@ -7,10 +10,8 @@
 
 from Tkinter import *
 
-# random var for testing
-
-foo = 3
-
+# this holds the color that is clicked
+color = "black"
 
 # this will hold a pressed or released value
 mouseState = "up"
@@ -61,7 +62,7 @@ def moveMouse(event):
         global yState
         # ...and xState and yState are null - aka release() is NOT true, 
         if xState is not None and yState is not None:
-            event.widget.create_line(xState,yState,event.x,event.y,smooth=TRUE)
+            event.widget.create_line(xState,yState,event.x,event.y,smooth=TRUE, fill = color)
         # then populate xState and yState with the coords of the mouse position - aka draw :)
         xState = event.x
         yState = event.y
@@ -78,8 +79,10 @@ def release(event):
 
 # function for when you press the blue button
 def bluePressed():
-    foo = 5
+    global color
     print("blue clicked")
+    color = "blue"
+
 
 if __name__ == "__main__":
     main()
